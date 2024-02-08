@@ -1,7 +1,9 @@
 import {Router} from "express";
-import ExampleApi from "../../apps/example_api/route";
+import BlogAPI from "../../apps/blog_api/route";
 
 const route = Router();
-route.use("/example", ExampleApi);
+route.use("/blogs", BlogAPI);
+
+route.use("*", (_,res)=>res.status(404).json({message: "API not found"}));
 
 export default route;
